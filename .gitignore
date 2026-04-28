@@ -27,3 +27,6 @@ Thumbs.db
 
 # PowerShell
 *.ps1xml
+
+# npm artifact from language: js workaround
+package-lock.json

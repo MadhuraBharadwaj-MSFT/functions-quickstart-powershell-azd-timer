@@ -6,5 +6,10 @@ metadata:
 services:
   api:
     project: ./src/
-    language: powershell
+    # NOTE: language is set to 'js' as a workaround -- azd has no built-in
+    # packager for PowerShell. The 'js' packager uses generic ZIP packaging
+    # which works for any runtime. The actual runtime is set via
+    # FUNCTIONS_WORKER_RUNTIME=powershell in Bicep.
+    language: js
+    remoteBuild: false
     host: function
