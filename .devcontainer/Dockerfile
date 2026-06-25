@@ -16,6 +16,11 @@ RUN sudo npm install -g azure-functions-core-tools
 # Without it, `func start` fails with:
 #   Microsoft.NETCore.App, version '8.0.0' (x64) was not found.
 # The universal image ships newer runtimes (9.0/10.0) but not 8.0 specifically.
+#
+# TODO: Bump to .NET 10 once the Azure Functions PowerShell worker ships
+# support for PowerShell 7.6 (which targets .NET 10). As of June 2026 the
+# worker is pinned to PowerShell 7.4 + .NET 8 LTS (EOL Nov 10, 2026). Track:
+#   https://learn.microsoft.com/azure/azure-functions/functions-versions
 RUN curl -fsSL https://packages.microsoft.com/config/ubuntu/$(. /etc/os-release && echo $VERSION_ID)/packages-microsoft-prod.deb -o /tmp/packages-microsoft-prod.deb \
     && sudo dpkg -i /tmp/packages-microsoft-prod.deb \
     && rm /tmp/packages-microsoft-prod.deb \
